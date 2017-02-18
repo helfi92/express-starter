@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-	"private": true,
+  "private": true,
   "description": "Get started with Express!",
   "main": "index.js",
   "config": {
