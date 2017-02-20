@@ -3,6 +3,9 @@
   "private": true,
   "description": "Get started with Express!",
   "main": "index.js",
+  "engines" : {
+    "node" : ">=6.9"
+  },
   "config": {
     "presets": [
       "neutrino-preset-airbnb-base",
