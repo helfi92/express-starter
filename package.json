@@ -1,7 +1,11 @@
 {
   "version": "1.0.0",
+  "private": true,
   "description": "Get started with Express!",
   "main": "index.js",
+  "engines" : {
+    "node" : ">=6.9"
+  },
   "neutrino": {
     "use": [
       "neutrino-preset-airbnb-base",
