@@ -6,8 +6,9 @@ Create Node apps using the Express framework with zero initial configuration. `e
 
 - Zero upfront configuration necessary to start developing and building an Express project
 - Extends from [neutrino-preset-node](https://neutrino.js.org/presets/neutrino-preset-node/)
-  - Modern Babel compilation supporting ES modules, Node.js 6.9+, and async functions
+  - Modern Babel compilation supporting ES modules, Node.js 6.9+, async functions, and dynamic imports
   - Auto-wired sourcemaps
+  - Hot Module Replacement with source-watching during development
   - Chunking of external dependencies apart from application code
   - Easily extensible to customize your project as needed
 - Extends from [neutrino-preset-airbnb-base](https://neutrino.js.org/presets/neutrino-preset-airbnb-base/)
@@ -32,39 +33,23 @@ To get you started fork and clone the `express-starter` repository and install t
 
 ## Quick start
 
-Start the app with `yarn serve`, then open a browser to `http://localhost:3000`.
+Start the app with `yarn start`, then open a browser to `http://localhost:3000`.
 
 ### Yarn
 
 ```bash
-❯ yarn serve
-Warning: This preset does not support watch compilation. Falling back to a one-time build.
-Hash: 51bbc06d11fbccda1897
-Version: webpack 2.2.1
-Time: 981ms
-       Asset     Size  Chunks             Chunk Names
-    index.js  3.66 kB       0  [emitted]  index
-index.js.map  3.54 kB       0  [emitted]  index
-✨  Done in 2.05s.
+❯ yarn start
+✔ Build completed
 Running on :3000
 ```
 
 ### npm
 
 ```bash
-❯ npm run serve
-Warning: This preset does not support watch compilation. Falling back to a one-time build.
-Hash: 51bbc06d11fbccda1897
-Version: webpack 2.2.1
-Time: 981ms
-       Asset     Size  Chunks             Chunk Names
-    index.js  3.66 kB       0  [emitted]  index
-index.js.map  3.54 kB       0  [emitted]  index
-✨  Done in 2.05s.
+❯ npm run start
+✔ Build completed
 Running on :3000
 ```
-
-**Important Note:** At the time of writing, Neutrino's Node preset does not support `watch` compilation; it will instead fall back to running a build with the `NODE_ENV` environment variable set to `development`.
 
 ## Building
 
@@ -72,16 +57,14 @@ Running on :3000
 
 ```bash
 ❯ yarn build
-clean-webpack-plugin: /Users/hassanali/Documents/Mozilla/projects/express-starter/build has been removed.
-Build completed in 0.715s
-
-Hash: 51bbc06d11fbccda1897
-Version: webpack 2.2.1
-Time: 721ms
+✔ Building project completed
+Hash: d37197f792ebd4b79477
+Version: webpack 2.3.2
+Time: 755ms
        Asset     Size  Chunks             Chunk Names
-    index.js  3.66 kB       0  [emitted]  index
-index.js.map  3.54 kB       0  [emitted]  index
-✨  Done in 1.48s.
+    index.js  3.97 kB       0  [emitted]  index
+index.js.map  3.83 kB       0  [emitted]  index
+✨  Done in 2.60s.
 ```
 
 ## Running Tests
@@ -114,8 +97,8 @@ _Example: Allow importing modules with an `.mjs` extension._
 
 ```json
 {
-  "config": {
-    "neutrino": {
+  "neutrino": {
+    "config": {
       "resolve": {
         "extensions": [
           ".mjs"

@@ -6,25 +6,24 @@
   "engines" : {
     "node" : ">=6.9"
   },
-  "config": {
-    "presets": [
+  "neutrino": {
+    "use": [
       "neutrino-preset-airbnb-base",
       "neutrino-preset-node"
     ]
   },
   "scripts": {
     "start": "neutrino start",
-    "build": "neutrino build",
-    "serve": "yarn start && node build"
+    "build": "neutrino build"
   },
   "author": "Hassan Ali <helfi92@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "neutrino": "^4.0.1",
-    "neutrino-preset-airbnb-base": "^4.0.1",
-    "neutrino-preset-node": "^4.0.1"
+    "neutrino": "^5.1.1",
+    "neutrino-preset-airbnb-base": "^5.1.0",
+    "neutrino-preset-node": "^5.1.0"
   },
   "dependencies": {
-    "express": "^4.14.1"
+    "express": "^4.15.2"
   }
 }
