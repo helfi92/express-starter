@@ -6,20 +6,16 @@ Create Node apps using the Express framework with zero initial configuration. `e
 
 - Zero upfront configuration necessary to start developing and building an Express project
 - Extends from [neutrino-preset-node](https://neutrino.js.org/presets/neutrino-preset-node/)
-  - Modern Babel compilation supporting ES modules, Node.js 6.9+, async functions, and dynamic imports
-  - Auto-wired sourcemaps
+  - Modern Babel compilation supporting ES modules, Node.js 6.10+, async functions, and dynamic imports
+  - Supports automatically-wired sourcemaps
+  - Tree-shaking to create smaller bundles
   - Hot Module Replacement with source-watching during development
   - Chunking of external dependencies apart from application code
-  - Easily extensible to customize your project as needed
-- Extends from [neutrino-preset-airbnb-base](https://neutrino.js.org/presets/neutrino-preset-airbnb-base/)
-  - Zero upfront configuration necessary to start linting your project
-  - Modern Babel knowledge supporting ES modules, JSX, Web and Node.js apps
-  - Highly visible during development, fails compilation when building for production
   - Easily extensible to customize your project as needed
 
 ## Requirements
 
-- Node.js v6.9+
+- Node.js v6.10+
 - Yarn or npm client
 
 ## Installation
@@ -73,7 +69,7 @@ In order to keep this starter kit minimalist, `express-starter` has no test runn
 
 ## Customizing
 
-To override the build configuration, start with the documentation on [customization](/customization/README.md). `neutrino-preset-node` creates some conventions to make overriding the configuration easier once you are ready to make changes.
+To override the build configuration, start with the documentation on [customization](https://neutrino.js.org/customization/). `neutrino-preset-node` creates some conventions to make overriding the configuration easier once you are ready to make changes.
 
 By default the Node.js preset creates a single **main** `index` entry point to your application, and this maps to the `index.js` file in the `src` directory. This means that the Node.js preset is optimized toward a main entry to your app. Code not imported in the hierarchy of the `index` entry will not be output to the bundle. To overcome this you must either define more entry points, or import the code path somewhere along the `index` hierarchy.
 
@@ -89,35 +85,18 @@ Refer to the [list of rules and their identifers](https://neutrino.js.org/preset
 
 Refer to the [list of plugins and their identifiers](https://neutrino.js.org/presets/neutrino-preset-node/#plugins) which can be overridden.
 
-### Simple customization
+### Override configuration
 
-By following the [customization guide](https://neutrino.js.org/customization/simple.html) and knowing the rule, loader, and plugin IDs above, you can override and augment the build directly from `package.json`.
-
-_Example: Allow importing modules with an `.mjs` extension._
-
-```json
-{
-  "neutrino": {
-    "config": {
-      "resolve": {
-        "extensions": [
-          ".mjs"
-        ]
-      }
-    }
-  }
-}
-```
-
-### Advanced configuration
-
-By following the [customization guide](/customization/advanced.md) and knowing the rule, loader, and plugin IDs above, you can override and augment the build by creating a JS module which overrides the config.
+By following the [customization guide](https://neutrino.js.org/customization/) and knowing the rule, loader, and plugin IDs above, you can override and augment the build by by providing a function to your `.neutrinorc.js` use array. You can also make these changes from the Neutrino API in custom middleware.
 
 _Example: Allow importing modules with an `.mjs` extension._
 
 ```js
-module.exports = neutrino => {
-  neutrino.config.resolve.extensions.add('.mjs');
+module.exports = {
+  use: [
+    'neutrino-preset-node',
+    (neutrino) => neutrino.config.resolve.extensions.add('.mjs')
+  ]
 };
 ```
 
